@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script type='text/javascript' src='http://localhost/test-hotspot/jquery-2.2.4.min.js'></script>
+	<link rel='stylesheet' href='http://localhost/test-hotspot/bootstrap/bootstrap.min.css' />
+	<link rel='stylesheet' href='http://localhost/test-hotspot/style.css' />
+	<meta http-equiv="expires" content="-1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>	
+	<div class='container-fluid'>
+		<div class='centered'>
+			<!-- LOGIN -->
+			<div class="col-xs-12" id="login-form">
+				$(if chap-id)
+				<form name="sendin" action="$(link-login-only)" method="post">
+					<input type="hidden" name="username" />
+					<input type="hidden" name="password" />
+					<input type="hidden" name="dst" value="$(link-orig)" />
+					<input type="hidden" name="popup" value="true" />
+				</form>
+
+				<script type="text/javascript" src="/md5.js"></script>
+				<script type="text/javascript">
+					function doLogin() {
+						document.sendin.username.value = document.login.username.value;
+						document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+						document.sendin.submit();
+						return false;
+					}
+				</script>
+				$(endif)
+				<div id="pengumuman-email" class="col-xs-12 alert alert-warning">Email yang Anda masukkan akan menjadi username untuk menggunakan internet</div>
+				<table class="table table-responsive" id="login-box">
+					<tr>
+						<td align="center" valign="middle">
+							<table class="table table-responsive">								
+								<tr>
+									<td>
+										<form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+											<input type="hidden" name="dst" value="$(link-orig)" />
+											<input type="hidden" name="popup" value="true" />
+											<table class="table table-responsive" id="login-table">
+												<tr><td><input class="form-control" id="email-login" placeholder="Email Anda" name="username" type="text" value="$(username)" /></td></tr>
+												<tr><td><input class="form-control" id="password-login" placeholder="Password Anda" name="password" type="password" /></td></tr>
+												<tr><td>
+													<div class="register-form-text col-xs-4"><button id="hide-login" class="btn sip-button btn-default btn-block" type="button" value="OK">Register</button></div>
+													<div class="register-form-text col-xs-8"><button id="login-button" class="btn ok-button btn-primary btn-block" type="submit" value="OK">LOGIN</button></div>
+												</td></tr>
+											</table>
+										</div>
+									</form>
+								</table>
+
+								<!-- REGISTER -->
+								<div id="register-form">
+									<table class="table table-responsive">
+										<form action="http://localhost/test-hotspot/singupPro.php" method="POST" autocomplete="on" name="form">
+											<tr><td><input required type="email" required="required" placeholder="Email Anda" id="emailsignup" class="form-control register-form" name="emailsignup" /></td></tr>
+											<tr><td><input required type="password" placeholder="Password Anda" id="passwordsignup" class="form-control register-form" name="passwordsignup" /></td></tr>													
+											<tr><td><input required type="text" placeholder="Nama Lengkap" class="form-control register-form" name="namesignup" /></td></tr>
+											<tr><td><span class="input-group"><span class="input-group-addon">+62</span><input required type="text" placeholder="81234567890" class="form-control register-form" name="numberPhone" /></span></td></tr>
+											<tr><td>
+												<div class="register-form-text col-xs-4"><button id="hide-register" class="btn sip-button btn-default btn-block" type="button" value="OK">Login</button></div>
+												<div class="register-form-text col-xs-8"><button class="btn ok-button btn-primary btn-block" type="submit" value="OK">Register</button></div>
+											</td></tr>
+											<tr><td><div id="feedback" class="col-xs-12 alert alert-warning">Silahkan masukkan email Anda</div></td></tr>
+										</form>
+									</table>
+								</div>
+							</table>
+							<div id="warning-danger" class="col-xs-12 alert alert-danger">$(if error)$(error)$(endif)</div>
+						</td>							
+					</tr>
+				</table>
+			</div>
+		</table>
+
+		<script type="text/javascript">
+			document.login.username.focus();
+		</script>
+	</div>
+</div>
+</div>
+</body>
+<script type='text/javascript' src='http://localhost/test-hotspot/bootstrap/bootstrap.min.js'></script>
+<script type='text/javascript'>
+	function isValidEmailAddress(emailAddress) {
+		var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+		return pattern.test(emailAddress);
+	};
+
+	$('#email-login').blur(function() {
+		if (!isValidEmailAddress($(this).val())) {
+			$(this).css("background", "rgba(255,87,34,.5)");
+			$(this).css("color", "#fff");
+			alert("Email yang anda masukkan tidak valid");
+		} else {
+			$(this).css("background", "#fff");
+			$(this).css("color", "#000");
+		}
+	});
+
+	$('input.register-form').blur(function() {
+		if ($(this).val() == "") {
+			$(this).css("background", "rgba(255,87,34,.5)");
+			$(this).css("color", "#fff");
+			alert("Data ini harus diisi");
+		} else {
+			$(this).css("background", "#fff");
+			$(this).css("color", "#000");
+		}
+	});
+
+	$('#login-button').click(function() {
+		var email = $("#email-login").val();
+		var password = $("#password-login").val();
+		window.open('http://localhost/test-hotspot/mail.php?xeuXG7cR6N98R502sFUB='+email, '_blank');
+	})
+
+	$('#hide-login').click(function() {
+		$('#register-form').slideToggle();
+		$('#login-table').slideToggle();
+	})
+
+	$('#hide-register').click(function() {
+		$('#register-form').slideToggle();
+		$('#login-table').slideToggle();
+	});
+
+	// save the email to local storage
+	$("#emailsignup").blur(function() {
+		if (typeof(Storage) !== "undefined") {
+			localStorage.setItem("email", $(this).val());
+			console.log("Data saved. Your Email :: " + localStorage.getItem("email"));
+		} else {
+			console.log("This faggot using old browser");
+			alert("Harap update browser Anda ke versi yang lebih baru");
+		}
+	});
+
+	// save the password to local storage
+	$("#passwordsignup").blur(function() {
+		if (typeof(Storage) !== "undefined") {
+			localStorage.setItem("password", $(this).val());
+			console.log("Data saved. Your Password :: " + localStorage.getItem("password"));
+		} else {
+			console.log("This faggot using old browser");
+			alert("Harap update browser Anda ke versi yang lebih baru");
+		}
+	});
+
+	// $(document).ready(function(){
+	// 	$('#feedback').load('cekuser.php').show();
+	// 	$('#emailsignup').keyup(function(){
+	// 		if (isValidEmailAddress($("#emailsignup").val())) {
+	// 			$.post('cekuser.php', {emailsignup:form.emailsignup.value},
+	// 				function(result){
+	// 					$('#feedback').html(result).show();
+	// 				})
+	// 		} else {
+	// 			$('#feedback').text('Silahkan masukkan email Anda');
+	// 		}
+	// 	});
+	// });
+</script>
+</html>
