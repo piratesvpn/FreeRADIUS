@@ -45,22 +45,20 @@
 		$mail->isHTML(true);											// Set email format to HTML
 
 		$mail->Subject = "Konfirmasi Pendaftaran User Hotspot Jogja Kota";
-		$mail->Body    = "<div style='font-size :12pt; font-family: monospace; text-align: center; line-height: 30px; padding: 15px; background: rgba(200,200,200,.5);'><div style='padding: 30px; text-transform: uppercase; color: #fff; background: #aaa; margin-bottom: 15px; text-align: center; font-size: 26pt;'>Free Hotspot Yogyakarta</div><div style='text-align: center; padding: 15px; background: #fff;'>Terima kasih telah mendaftar di Hotspot Jogja Kota. Anda sudah dapat menggunakan internet gratis di lingkungan kota Yogyakarta. Password yang anda gunakan tertera pada kotak teks dibawah</div><h1 style='font-weight: 100; box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); font-family: monospace; text-align: center; background: #fff; padding: 15px;'>$password</h1></div>";
+		$mail->Body    = "<div style='font-size :12pt; font-family: monospace; text-align: center; line-height: 30px; padding: 15px; background: rgba(200,200,200,.5);'><div style='padding: 30px; text-transform: uppercase; color: #fff; background: #aaa; margin-bottom: 15px; text-align: center; font-size: 26pt;'>Free Hotspot Yogyakarta</div><div style='text-align: center; padding: 15px; background: #fff;'>Terima kasih telah mendaftar di Hotspot Jogja Kota. Anda sudah dapat menggunakan internet gratis di lingkungan kota Yogyakarta. Password yang anda gunakan tertera pada kotak teks dibawah</div><h1 style='font-weight: 100; box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); font-family: monospace; text-align: center; background: #fff; padding: 15px;'>$password_sent</h1></div>";
 
 		if(!$mail->send()) {
 			echo "Message could not be sent.";
 			echo "Mailer Error: " . $mail->ErrorInfo;
-		} else {
-			echo "Message has been sent";
 		}
 	}
-?>
+	?>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		localStorage.removeItem("email");
-		localStorage.removeItem("password");
-			// window.close();
+	<script type="text/javascript">
+		$(document).ready(function() {
+			localStorage.removeItem("email");
+			localStorage.removeItem("password");
+			window.close();
 		});
 	</script>
 </body>
