@@ -15,7 +15,7 @@
 		$result = $conn->query($sql);
 
 		// insert into radius.radcheck
-		$conn = mysqli_connect("localhost", "root", "L*hlXjs1", "radius");
+		$conn = mysqli_connect("localhost", "root", "tidakada", "radius");
 		$sql = "INSERT INTO `radcheck` (`id`, `username`, `attribute`, `op`, `value`) VALUES (NULL, '$emailsignup', 'User-Password', '==', '$passwordsignup')";
 		$result = $conn->query($sql);
 
@@ -24,7 +24,7 @@
 		$password = "<script type='text/javascript'>document.write(localStorage.getItem('password'));</script>";
 
 		// check the email status
-		$conn = mysqli_connect("localhost", "root", "L*hlXjs1", "user");
+		$conn = mysqli_connect("localhost", "root", "tidakada", "user");
 		$sql = "SELECT email_sent FROM user";
 		$result = $conn->query($sql);
 
@@ -34,7 +34,7 @@
 	?>
 
 	<script>
-		window.location.href = "http://localhost/test-hotspot/index.html";
+		window.location.href = "http://192.168.1.1/login";
 	</script>
 </body>
 </html>
